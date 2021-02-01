@@ -8,6 +8,6 @@ int main()
     cin >> num;
 
     for (int i = 0; i < num; i++)
-        cout << "I love c++" << endl;
+        cout << "I love C++" << endl;
     return 0;
 }
