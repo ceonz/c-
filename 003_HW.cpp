@@ -7,6 +7,10 @@ int main()
     string fire = "fire";
     string water = "water";
 
+    cin >> air;
+    cin >> fire;
+    cin >> water;
+
     cout << air << endl;
     cout << fire << endl;
     cout << water << endl;
