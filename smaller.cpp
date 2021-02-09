@@ -2,9 +2,10 @@
 Author: Ceon Bang
 Course: CSCI-136
 Instructor: Tong Yi
-Assignment: Lab 1
+Assignment: Lab 1A
 
 prompts user to input to integers and prints out the smallest integer
+second sentence for the requirement
 
 */
 
