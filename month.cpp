@@ -4,8 +4,8 @@ Course: CSCI-136
 Instructor: Tong Yi
 Assignment: Lab 1D
 
-user inputs number in integer(month)
-to return number of days of month
+calculates and prints
+leap year and month
 
 */
 
