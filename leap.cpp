@@ -33,6 +33,10 @@ int main()
     {
         cout << "leap year" << endl;
     }
+    else if (year % 400 != 0)
+    {
+        cout << "common year" << endl;
+    }
     else
     {
         cout << "leap year" << endl;
