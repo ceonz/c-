@@ -6,6 +6,8 @@ Assignment: Lab 1D
 
 calculates and prints
 leap year and month
+calculate
+error fix
 
 */
 
