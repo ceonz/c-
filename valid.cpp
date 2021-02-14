@@ -18,7 +18,7 @@ main() {
     cout << "Please enter an integer: ";
     cin >> n;
 
-    while (n <= 0 or n >= 1000) {
+    while (n <= 0 or n >= 100) {
         cout << "Please re-enter: ";
         cin >> n;
     }
