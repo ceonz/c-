@@ -1,3 +1,15 @@
+/*
+Author: Ceon Bang
+Course: CSCI-136
+Instructor: Tong Yi
+Assignment: Lab 3A
+
+using 3 additional libraries to handle tsv data
+to print out data in certain column in a certain date
+
+*/
+
+
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
