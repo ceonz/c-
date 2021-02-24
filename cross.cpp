@@ -14,7 +14,7 @@ a cross shape with *
 using namespace std;
 int main() {
     int size;
-    cout << "Please input size: ";
+    cout << "Please input size: " << endl;
     cin >> size;
 
     for (int row = 0; row < size; row++) {
