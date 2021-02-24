@@ -14,9 +14,9 @@ by putting a space in between *
 using namespace std;
 int main() {
     int width, height;
-    cout << "Please input width: ";
+    cout << "Please input width: " << endl;
     cin >> width;
-    cout << "Please input height: ";
+    cout << "Please input height: " << endl;
     cin >> height;
 
     for (int row = 0; row < height; row++) {
