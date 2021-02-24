@@ -5,7 +5,7 @@ Instructor: Tong Yi
 Assignment: Lab 4F
 
 use for loop to create
-a cross shape with *
+trapezoid shape with *
 
 */
 
