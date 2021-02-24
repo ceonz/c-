@@ -19,7 +19,7 @@ int main() {
 
     for (int row = 0; row < size; row++) {
         for (int col = 0; col < size; col++) {
-            if (row <= col) {
+            if (col <= row) {
                 cout << "*";
             }
             else {
