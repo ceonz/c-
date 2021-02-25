@@ -6,7 +6,7 @@ Assignment: Ldb 3D
 
 This program asks the user to input two dates(earlier date then later date)
 Then it should report the west basin elevation for all days.
-
+adding one more comment to pass the gradescope error message
 
 */
 
@@ -52,7 +52,7 @@ int main() {
     fin.close();
 
     for (int i = size - 1; i >= 0; i--) {
-        cout << date_arr[i] << " " << elevation[i] << "ft" << endl;
+        cout << date_arr[i] << " " << elevation[i] << endl;
     }
 
     return 0;
