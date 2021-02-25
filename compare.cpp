@@ -6,6 +6,7 @@ Assignment: Lab 3C
 
 Asks user to input two dates.
 Print out the comparison(higher or the same)
+adding one more line because of the error
 
 */
 
