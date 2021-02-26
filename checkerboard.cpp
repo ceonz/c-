@@ -14,14 +14,15 @@ by putting a space in between *
 using namespace std;
 int main() {
     int width, height;
-    cout << "Please input width: " << endl;
+    cout << "Please input width: ";
     cin >> width;
-    cout << "Please input height: " << endl;
+    cout << "Please input height: ";
     cin >> height;
+    cout << endl;
 
     for (int row = 0; row < height; row++) {
         for (int col = 0; col < width; col++) {
-            if ((row + col) % 2 == 0) { // row and col are odd or even at the same time.
+            if ((row + col) % 2 == 0) {
                 cout << "*";
             }
             else {
