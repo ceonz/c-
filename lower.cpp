@@ -14,19 +14,16 @@ increment of *'s
 using namespace std;
 int main() {
     int size;
-    cout << "Please input size: " << endl;
+    cout << "Please input size: ";
     cin >> size;
+    cout << endl;
 
-    for (int row = 0; row < size; row++) {
-        for (int col = 0; col < size; col++) {
-            if (row >= row) {
-                cout << "*";
-            }
-            else {
-                cout << " ";
-            }
+    for (int row = 0; row < size; row++) { // increment of 1 ex) i += 1
+        for (int col = 0; col <= row; col++) { // increment of 2 ex) i += 2
+            cout << "*";
         }
         cout << endl;
     }
+
     return 0;
 }
