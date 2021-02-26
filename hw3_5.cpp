@@ -4,7 +4,8 @@ Course: CSCI-136
 Instructor: Tong Yi
 Assignment: Hw E3.5
 
-Write a program that reads three numbers and prints “increasing” if they are in increasing order, “decreasing” if they are in decreasing order, and “neither” other- wise. Here, “increasing” means “strictly increasing”, with each value larger than its predecessor. The sequence 3 4 4 would not be considered increasing.
+This program prints increasing for three consecutive number in increasing order.
+As above it prints decreasing, neither. (strong filter)
 
 */
 
@@ -18,6 +19,7 @@ int main() {
     cin >> num1 >> num2 >> num3;
 
     if (num1 < num2 and num2 < num3) {
+        // (num1 < num2 < num3 )wouldn't work because it would be as comparing num1 < num2 (boolean result - true(1) or false(0)) with num3 
         cout << "increasing" << endl;
     }
     else if (num1 > num2 and num2 > num3) {
