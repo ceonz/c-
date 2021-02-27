@@ -19,6 +19,7 @@ int main() {
 
     cout << "Please input height: ";
     cin >> height;
+    cout << endl;
 
     int spaces = 0, stars = width;
     if (width - height < width / 2) {
