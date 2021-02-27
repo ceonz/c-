@@ -6,6 +6,7 @@ Assignment: Lab 4F
 
 use for loop to create
 trapezoid shape with *
+adding one more comment to pass gradescope
 
 */
 
