@@ -40,6 +40,10 @@ string middle(string str) {
 }
 
 int main() {
+    string test;
+    cout << "test: " << endl;
+    cin >> test;
 
+    middle(test);
     return 0;
 }
