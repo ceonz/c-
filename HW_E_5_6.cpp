@@ -33,7 +33,7 @@ string middle(string str) {
     }
     else {
         int even = word_length / 2;
-        cout << str[even] << str[even - 1];
+        cout << str[even - 1] << str[even];
     }
 
     return 0;
