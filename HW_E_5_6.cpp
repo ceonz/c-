@@ -12,6 +12,7 @@ For example, middle ("middle) returns "dd"
 
 #include <iostream>
 #include <cmath>
+#include <string>
 using namespace std;
 
 // count the entire length to the word and divide by two to find out middle value
@@ -29,21 +30,18 @@ string middle(string str) {
 
     if (word_length % 2 == 1) {
         int odd = floor(word_length / 2);
-        cout << str[odd];
+        return str[odd];
     }
     else {
         int even = word_length / 2;
-        cout << str[even - 1] << str[even];
+        return str[even - 1] + str[even];
     }
 
-    return 0;
 }
 
 int main() {
-    string test;
-    cout << "test: " << endl;
-    cin >> test;
+    cout << middle("middle") << endl;
+    cout << middle("abrac") << endl;
 
-    middle(test);
     return 0;
 }
