@@ -24,16 +24,16 @@ using namespace std;
 // ex) middle.length = 6 % 2 = 0, 6/2= 3, print the 3th and 3-1th word. = dd
 
 
-string middle(string in_word) {
-    int word_length = in_word.length();
+string middle(string str) {
+    int word_length = str.length();
 
     if (word_length % 2 == 1) {
         int odd = floor(word_length / 2);
-        cout << in_word[odd];
+        cout << str[odd];
     }
     else {
         int even = word_length / 2;
-        cout << in_word[even] << in_word[even - 1];
+        cout << str[even] << str[even - 1];
     }
 
     return 0;
