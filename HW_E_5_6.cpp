@@ -27,7 +27,9 @@ string middle(string str); // function prototype
 // ex) middle.length = 6 % 2 = 0, 6/2= 3, print the 3th and 3-1th word. = dd
 
 int main() {
-
+    cout << middle("middle") << endl;
+    cout << middle("abcde") << endl;
+    return 0;
 }
 
 string middle(string str) {
@@ -39,7 +41,7 @@ string middle(string str) {
     }
     else {
         int even = word_length / 2;
-        return str.substr(even, 2);
+        return str.substr(even - 1, 2);
     }
     return false;
 }
