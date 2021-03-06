@@ -30,14 +30,16 @@ string middle(string str) {
 
     if (word_length % 2 == 1) {
         int odd = floor(word_length / 2);
-        return str[odd];
+        return str.substr(odd, 1);
     }
     else {
         int even = word_length / 2;
-        return str[even - 1] + str[even];
+        return str.substr(even, 2);
     }
 
 }
+
+
 
 int main() {
     cout << middle("middle") << endl;
