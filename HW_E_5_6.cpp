@@ -26,7 +26,6 @@ string middle(string str) {
         int even = word_length / 2;
         return str.substr(even - 1, 2);
     }
-    return false;
 }
 // count the entire length to the word and divide by two to find out middle value
 // use the value to index the middle string and prints the values.
