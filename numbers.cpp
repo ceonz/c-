@@ -18,12 +18,16 @@ bool isDivisibleBy(int n, int d);
 bool isPrime(int n);
 
 int main() {
-    cout << isPrime(13) << endl;
+    cout << isPrime(1) << endl;
     cout << isPrime(6) << endl;
 }
 
 bool isPrime(int n) {
-    for (int i = 2; i < n / 2; i++) {
+    if (n <= 1) {
+        return false;
+    }
+
+    for (int i = 2; i < n; i++) {
         if (isDivisibleBy(n, i)) {
             return false;
         }
