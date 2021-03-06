@@ -15,8 +15,19 @@ For example, middle ("middle) returns "dd"
 #include <string>
 using namespace std;
 
-string middle(string str); // function prototype
+string middle(string str) {
+    int word_length = str.length();
 
+    if (word_length % 2 == 1) {
+        int odd = floor(word_length / 2);
+        return str.substr(odd, 1);
+    }
+    else {
+        int even = word_length / 2;
+        return str.substr(even - 1, 2);
+    }
+    return false;
+}
 // count the entire length to the word and divide by two to find out middle value
 // use the value to index the middle string and prints the values.
 
@@ -32,16 +43,3 @@ int main() {
     return 0;
 }
 
-string middle(string str) {
-    int word_length = str.length();
-
-    if (word_length % 2 == 1) {
-        int odd = floor(word_length / 2);
-        return str.substr(odd, 1);
-    }
-    else {
-        int even = word_length / 2;
-        return str.substr(even - 1, 2);
-    }
-    return false;
-}
