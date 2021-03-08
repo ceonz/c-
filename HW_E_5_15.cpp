@@ -38,8 +38,8 @@ void sort3(int& a, int& b, int& c) {
         }
         else {
             // b < c < a
-            swap(a, b);
-            swap(c, a);
+            swap(b, a);
+            swap(c, b);
         }
     }
     else {//num 3 is the smallest
@@ -56,9 +56,17 @@ void sort3(int& a, int& b, int& c) {
 }
 
 int main() {
-    int v = 1;
-    int w = 4;
-    int x = 3;
+    //v<w<x o
+    //v<x<w o
+    //w<v<x o
+    //w<x<v x    b<c <a
+    //x<v<w o
+    //x<w<v o
+
+
+    int v = 3;
+    int w = 1;
+    int x = 2;
     sort3(v, w, x); // v is now 1, w is now 3, x is now 4
 
     cout << v << w << x << endl;
