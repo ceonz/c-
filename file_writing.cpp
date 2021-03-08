@@ -15,10 +15,12 @@ pseudo code below:
 using namespace std;
 
 int main() {
+
     fstream file;
 
     //Open a file with the name hello.txt.
-    file.open("hello.txt");
+    //*line added. if the file doesn't exist, create one with the same name.
+    file.open("hello.txt", fstream::out);
 
     //Store the message “Hello, World!” in the file.
     file << "Hello, World!" << endl;
