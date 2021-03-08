@@ -23,7 +23,7 @@ int main() {
     file.open("hello.txt", fstream::out);
 
     //Store the message “Hello, World!” in the file.
-    file << "Hello, World!" << endl;
+    file << "Hello, World!";
 
     //Close the file.
     file.close();
