@@ -15,15 +15,15 @@ using namespace std;
 // Function prototypes
 bool isDivisibleBy(int n, int d);
 bool isPrime(int n);
-int nextprime(int n);
+int nextPrime(int n);
 
 int main() {
-    cout << nextprime(14) << endl;
-    cout << nextprime(17) << endl;
+    cout << nextPrime(14) << endl;
+    cout << nextPrime(17) << endl;
     return 0;
 }
 
-int nextprime(int n) {
+int nextPrime(int n) {
     //Increment n 1 by 1 until you find a prime
     n++; // Increment n by 1 first. To avoid the case that n is a lso a prime number
     while (!isPrime(n)) {
