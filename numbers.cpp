@@ -12,11 +12,16 @@ for example) nextPrime(14) == 17
 #include <iostream>
 using namespace std;
 
-
 // Function prototypes
 bool isDivisibleBy(int n, int d);
 bool isPrime(int n);
 int nextprime(int n);
+
+int main() {
+    cout << nextprime(14) << endl;
+    cout << nextprime(17) << endl;
+    return 0;
+}
 
 int nextprime(int n) {
     //Increment n 1 by 1 until you find a prime
@@ -51,9 +56,3 @@ bool isDivisibleBy(int n, int d) {
     return false;
 }
 
-
-int main() {
-    cout << nextprime(17) << endl;
-    cout << nextprime(3) << endl;
-    return 0;
-}
