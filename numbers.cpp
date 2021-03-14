@@ -24,8 +24,10 @@ int main() {
     return 0;
 }
 
+
 int nextTwinPrime(int n) {
-    while (!nextPrime(n) && !isTwinPrime(n)) {
+    n++;
+    while (!isPrime(n) || !isTwinPrime(n)) {
         n++;
     }
     return n;
@@ -48,6 +50,7 @@ int countPrimes(int a, int b) {
     }
     return counter;
 }
+
 
 int nextPrime(int n) {
     //Increment n 1 by 1 until you find a prime
