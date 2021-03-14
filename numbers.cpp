@@ -20,20 +20,17 @@ bool isTwinPrime(int n);
 int nextTwinPrime(int n);
 
 int main() {
-    cout << nextTwinPrime(2) << endl;
+    cout << nextTwinPrime(5) << endl;
     return 0;
 }
 
 int nextTwinPrime(int n) {
-    while (1) {
-        if (isPrime(n) && isPrime(n + 2)) {
-            return n;
-        }
+    n++;
+    while (!nextPrime(n) && !isTwinPrime(n)) {
         n++;
     }
-
+    return n;
 }
-
 
 bool isTwinPrime(int n) {
     if (isPrime(n) and (isPrime(n - 2) or isPrime(n + 2))) {
