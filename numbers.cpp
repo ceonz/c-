@@ -25,7 +25,6 @@ int main() {
 }
 
 int nextTwinPrime(int n) {
-    n++;
     while (!nextPrime(n) && !isTwinPrime(n)) {
         n++;
     }
