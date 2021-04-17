@@ -99,8 +99,8 @@ int main() {
 
     int out[MAX_H][MAX_W];
 
-    for (int row = 0; row < h; row++) {
-        for (int col = 0; col < w; col++) {
+    for (int row = 0; row < h; row += 2) {
+        for (int col = 0; col < w; col += 2) {
             int value = img[row][col];
             int value_1 = img[row + 1][col];
             int value_2 = img[row][col + 1];
