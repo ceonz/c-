@@ -129,6 +129,12 @@ void displaySeparateLine(int numSpaces) {
 //TODO: implement by students
 //display the items in values array where bShown is true.
 void MemoryGame::display(bool *bShown) {
+  cout << " ";
+  for (int i = 0; i < this->numSpaces; ++i) {
+    cout << setw(3) << i << setw(3) << " ";
+  }
+  cout << endl;
+  displaySeparateLine(this->numSpaces);
   for (int i = 0; i < this->numSpaces; ++i) {
     if (bShown[i]) {
       cout << "|" << setw(5) << this->values[i];
@@ -137,6 +143,7 @@ void MemoryGame::display(bool *bShown) {
     }
   }
   cout << "|" << endl;
+  displaySeparateLine(this->numSpaces);
 }
 
 //TODO: implement by students
@@ -157,15 +164,7 @@ void MemoryGame::play() {
   setenv("TERM", "${TERM:-dumb}", false);
   while (true) {
     system("clear");
-    cout << " ";
-    for (int i = 0; i < this->numSpaces; ++i) {
-      cout << setw(3) << i << setw(3) << " ";
-    }
-    cout << endl;
-    displaySeparateLine(this->numSpaces);
     this->display(bShown);
-    displaySeparateLine(this->numSpaces);
-
     if (pairsFound == this->numPairs) {
       cout << "Congratulations! Take " << numFlips
            << " steps to find all matched pairs." << endl;
