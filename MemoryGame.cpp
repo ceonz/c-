@@ -5,8 +5,8 @@
 #include <iostream> //std
 using namespace std;
 
-int *randomize(int numSpaces); //function to randomize layout
-void swap(int *arr, int i, int j);
+int* randomize(int numSpaces); //function to randomize layout
+void swap(int* arr, int i, int j);
 void displaySeparateLine(int numSpaces);
 
 //TODO: implement by students
@@ -36,14 +36,14 @@ MemoryGame::MemoryGame() //default constructor,
   //   string value = to_string(rand() % 1000);
   // }
 
-  string *randNumbs // [807, 249, 73]
-      = (string *)malloc(sizeof(string) * this->numPairs);
+  string* randNumbs // [807, 249, 73]
+    = (string*)malloc(sizeof(string) * this->numPairs);
   for (int i = 0; i < this->numPairs; ++i) {
     randNumbs[i] = to_string(rand() % 1000);
     // cout << randNumbs[i] << endl;
   }
 
-  int *index = randomize(this->numSpaces); // [0, 1, 3, 5, 4, 7, 6, 2]
+  int* index = randomize(this->numSpaces); // [0, 1, 3, 5, 4, 7, 6, 2]
   // for (int i = 0; i < this->numSpaces; ++i) {
   //   cout << index[i] << endl;
   // }
@@ -55,7 +55,8 @@ MemoryGame::MemoryGame() //default constructor,
     if (i < this->numPairs * 2) { // [0, 6)
       this->values[index[i]] = randNumbs[i / 2];
       this->values[index[i + 1]] = randNumbs[i / 2];
-    } else {
+    }
+    else {
       this->values[index[i]] = "";
     }
   }
@@ -78,7 +79,7 @@ MemoryGame::~MemoryGame() {
 //Return an array of randomly allocated 0, 1, .., size-1
 //In constructors, randomly assign the data in dataVector
 //to array values
-int *randomize(int size) {
+int* randomize(int size) {
   //idea to randomize 0, 1, 2, 3, 4, 5,
   //generate a random int in [0, 6), say 3,
   //then move arr[3] to the end,
@@ -91,7 +92,7 @@ int *randomize(int size) {
   //get 0, 1, 4, 2, 5, 3
   //continue to randomize arr[0..2].
   //afterwards, continue to randomize arr[0..1].
-  int *arr = (int *)malloc(sizeof(int) * size);
+  int* arr = (int*)malloc(sizeof(int) * size);
   for (int i = 0; i < size; ++i) {
     arr[i] = i;
   }
@@ -106,7 +107,7 @@ int *randomize(int size) {
 //int* arr means int array arr, which implies the address
 //of the first element of array arr.
 //swap arr[i] and arr[j] in array of ints arr.
-void swap(int *arr, int i, int j) {
+void swap(int* arr, int i, int j) {
   int temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
@@ -128,7 +129,7 @@ void displaySeparateLine(int numSpaces) {
 
 //TODO: implement by students
 //display the items in values array where bShown is true.
-void MemoryGame::display(bool *bShown) {
+void MemoryGame::display(bool* bShown) {
   cout << " ";
   for (int i = 0; i < this->numSpaces; ++i) {
     cout << setw(3) << i;
@@ -140,7 +141,8 @@ void MemoryGame::display(bool *bShown) {
   for (int i = 0; i < this->numSpaces; ++i) {
     if (bShown[i]) {
       cout << setw(5) << this->values[i];
-    } else {
+    }
+    else {
       cout << setw(5) << "";
     }
     cout << "|";
@@ -157,20 +159,20 @@ void MemoryGame::display(bool *bShown) {
 //    otherwise, unflip the previous pick.
 //(3) Finish until every pair are chosen correctly.
 void MemoryGame::play() {
-  bool *bShown = new bool[this->numSpaces];
+  bool* bShown = new bool[this->numSpaces];
   // for (int i = 0; i < this->numSpaces; ++i) {
   //   bShown[i] = true;
   // }
   int pairsFound = 0;
   int numFlips = 0;
   int first = -1;
-  setenv("TERM", "${TERM:-dumb}", false);
+  //setenv("TERM", "${TERM:-dumb}", false);
   while (true) {
     // system("clear");
     this->display(bShown);
     if (pairsFound == this->numPairs) {
       cout << "Congratulations! Take " << numFlips
-           << " steps to find all matched pairs." << endl;
+        << " steps to find all matched pairs." << endl;
       break;
     }
 
@@ -188,7 +190,8 @@ void MemoryGame::play() {
     if (first == -1) { // 맨 처음 상태이거나, 페어를 찾아낸 다음의 경우
       bShown[index] = true;
       first = index;
-    } else { // 하나만 찾은 경우
+    }
+    else { // 하나만 찾은 경우
       if (this->values[first] == this->values[index]) { // 페어를 찾은 경우
         if (this->values[index] != "") {
           bShown[index] = true;
@@ -196,7 +199,8 @@ void MemoryGame::play() {
           pairsFound += 1;
           first = -1;
         }
-      } else {
+      }
+      else {
         bShown[first] = false;
         first = -1;
       }
