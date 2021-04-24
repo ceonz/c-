@@ -22,7 +22,7 @@ public:
 
 double length(Coord3D* p) {
     return sqrt(pow(p->x, 2) + pow(p->y, 2) + pow(p->z, 2));
-};
+}
 
 int main() {
     Coord3D pointP = { 10, 20, 30 };
