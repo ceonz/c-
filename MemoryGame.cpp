@@ -135,7 +135,7 @@ void MemoryGame::display(bool* bShown) {
     cout << setw(3) << i;
     cout << setw(3) << " ";
   }
-  cout << endl;
+  cout << "\n";
   displaySeparateLine(this->numSpaces);
   cout << "|";
   for (int i = 0; i < this->numSpaces; ++i) {
@@ -147,7 +147,7 @@ void MemoryGame::display(bool* bShown) {
     }
     cout << "|";
   }
-  cout << endl;
+  cout << "\n";
   displaySeparateLine(this->numSpaces);
 }
 
@@ -160,42 +160,40 @@ void MemoryGame::display(bool* bShown) {
 //(3) Finish until every pair are chosen correctly.
 void MemoryGame::play() {
   bool* bShown = new bool[this->numSpaces];
-  // for (int i = 0; i < this->numSpaces; ++i) {
-  //   bShown[i] = true;
-  // }
+  for (int i = 0; i < this->numSpaces; ++i) {
+    bShown[i] = false;
+  }
   int pairsFound = 0;
   int numFlips = 0;
   int first = -1;
-  //setenv("TERM", "${TERM:-dumb}", false);
-  while (true) {
+  int index;
+  // setenv("TERM", "${TERM:-dumb}", false);
+  this->display(bShown);
+  while (pairsFound < numPairs) {
     // system("clear");
-    this->display(bShown);
-    if (pairsFound == this->numPairs) {
-      cout << "Congratulations! Take " << numFlips
-        << " steps to find all matched pairs." << endl;
-      break;
-    }
-
-    int index;
-    bool wrong = false;
     cout << "Pick a cell to flip: ";
     cin >> index;
-    while (index < 0 or index > this->numSpaces - 1) {
-      cout << "index needs be in range of [0, ";
-      cout << this->numSpaces - 1 << "]." << endl;
+    while (index < 0 or index >= this->numSpaces or bShown[index]) {
+      if (bShown[index]) {
+        cout << "The cell indexed at " << index << " is shown."
+          << "\n";
+      }
+      else {
+        cout << "index needs be in range of [0, " << this->numSpaces - 1 << "]."
+          << "\n";
+      }
       cout << "Re-enter an index: ";
       cin >> index;
     }
 
-    if (first == -1) { // 맨 처음 상태이거나, 페어를 찾아낸 다음의 경우
+    if (first == -1) { // first flip
       bShown[index] = true;
       first = index;
     }
-    else { // 하나만 찾은 경우
-      if (this->values[first] == this->values[index]) { // 페어를 찾은 경우
+    else { // second flip
+      if (this->values[first] == this->values[index]) {
         if (this->values[index] != "") {
           bShown[index] = true;
-          cout << "The cell indexed at " << index << " is shown." << endl;
           pairsFound += 1;
           first = -1;
         }
@@ -206,7 +204,11 @@ void MemoryGame::play() {
       }
     }
     numFlips += 1;
+    this->display(bShown);
   }
+  cout << "Congratulations! Take " << numFlips
+    << " steps to find all matched pairs."
+    << "\n";
   delete[] bShown;
   bShown = nullptr;
 }
