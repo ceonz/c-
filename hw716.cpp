@@ -20,12 +20,14 @@ struct Point {
 
 double distance(Point a, Point  b) {
     double dx = b.x - a.x;
-    double dy = b.y - b.y;
+    double dy = b.y - a.y;
     return sqrt((dx * dx) + (dy * dy));
 }
 
 int main() {
-
+    Point p1{ 1.0, 2.0 };
+    Point p2{ 2.0, 3.0 };
+    cout << distance(p1, p2) << endl;
 
     return 0;
 }
