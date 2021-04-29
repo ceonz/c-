@@ -35,7 +35,7 @@ MemoryGame::MemoryGame() //default constructor,
   // for (int i = 0; i < numPairs * 2; i += 2) {
   //   string value = to_string(rand() % 1000);
   // }
-// [807, 249, 73]
+  // [807, 249, 73]
   // string *randNumbs = (string *)malloc(sizeof(string) * numPairs);
   string *randNumbs = new string[numPairs];
   for (int i = 0; i < numPairs; ++i) {
@@ -161,47 +161,47 @@ void MemoryGame::display(bool *bShown) {
 //(3) Finish until every pair are chosen correctly.
 void MemoryGame::play() {
   bool *bShown = new bool[numSpaces];
-  for (int i = 0; i < numSpaces; ++i) {
+  for (int i = 0; i < numSpaces; i++) {
     bShown[i] = false;
   }
-  int pairsFound = 0;
-  int numFlips = 0;
-  int first = -1;
   int index;
-  // setenv("TERM", "${TERM:-dumb}", false);
+  int first;
+  int numFlips = 0;
+  int pairsFound = 0;
   display(bShown);
   while (pairsFound < numPairs) {
-    // system("clear");
     cout << "Pick a cell to flip: ";
     cin >> index;
-    while (index < 0 or index >= numSpaces or bShown[index]) {
-      if (bShown[index]) {
-        cout << "The cell indexed at " << index << " is shown." << "\n";
+    while (index < 0 || index >= numSpaces || bShown[index] == true) {
+      if (index < 0 || index >= numSpaces) {
+        cout << "index needs to be in range [0, " << numSpaces << "]."
+             << "\n";
       } else {
-        cout << "index needs to be in range [0, " << numSpaces << "]." << "\n";
+        cout << "The cell indexed at " << index << " is shown."
+             << "\n";
       }
       cout << "Re-enter an index: ";
       cin >> index;
     }
-
-    if (numFlips % 2 == 0) { // first flip
+    if (numFlips % 2 == 0) {
       bShown[index] = true;
       first = index;
-    } else { // second flip
-      if (values[first] == values[index]) {
-        if (values[first] != "") {
-          bShown[index] = true;
-          pairsFound += 1;
-        }
+    } else {
+      if (values[first] == values[index] && values[first] != "") {
+        bShown[index] = true;
+        pairsFound++;
       } else {
         bShown[first] = false;
       }
     }
-    numFlips += 1;
     display(bShown);
+    numFlips += 1;
   }
+
   cout << "Congratulations! Take " << numFlips
-       << " steps to find all matched pairs." << "\n";
+       << " steps to find all matched pairs."
+       << "\n";
+
   delete[] bShown;
   bShown = nullptr;
 }
