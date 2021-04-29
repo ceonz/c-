@@ -176,37 +176,32 @@ void MemoryGame::play() {
     cin >> index;
     while (index < 0 or index >= numSpaces or bShown[index]) {
       if (bShown[index]) {
-        cout << "The cell indexed at " << index << " is shown."
-             << "\n";
+        cout << "The cell indexed at " << index << " is shown." << "\n";
       } else {
-        cout << "index needs be in range of [0, " << numSpaces - 1 << "]."
-             << "\n";
+        cout << "index needs to be in range [0, " << numSpaces << "]." << "\n";
       }
       cout << "Re-enter an index: ";
       cin >> index;
     }
 
-    if (first == -1) { // first flip
+    if (numFlips % 2 == 0) { // first flip
       bShown[index] = true;
       first = index;
     } else { // second flip
       if (values[first] == values[index]) {
-        if (values[index] != "") {
+        if (values[first] != "") {
           bShown[index] = true;
           pairsFound += 1;
-          first = -1;
         }
       } else {
         bShown[first] = false;
-        first = -1;
       }
     }
     numFlips += 1;
     display(bShown);
   }
   cout << "Congratulations! Take " << numFlips
-       << " steps to find all matched pairs."
-       << "\n";
+       << " steps to find all matched pairs." << "\n";
   delete[] bShown;
   bShown = nullptr;
 }
