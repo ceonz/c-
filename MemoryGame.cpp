@@ -5,8 +5,8 @@
 #include <iostream> //std
 using namespace std;
 
-int* randomize(int numSpaces); //function to randomize layout
-void swap(int* arr, int i, int j);
+int *randomize(int numSpaces); //function to randomize layout
+void swap(int *arr, int i, int j);
 void displaySeparateLine(int numSpaces);
 
 //TODO: implement by students
@@ -28,40 +28,41 @@ MemoryGame::MemoryGame() //default constructor,
   //or autograde script cannot handle random input.
 
   //TODO: your code here
-  this->numPairs = 3;
-  this->numSpaces = 2 * this->numPairs + 2;
+  numPairs = 3;
+  numSpaces = 2 * numPairs + 2;
 
-  // int *arr = randomize(this->numSpaces);
-  // for (int i = 0; i < this->numPairs * 2; i += 2) {
+  // int *arr = randomize(numSpaces);
+  // for (int i = 0; i < numPairs * 2; i += 2) {
   //   string value = to_string(rand() % 1000);
   // }
-
-  string* randNumbs // [807, 249, 73]
-    = (string*)malloc(sizeof(string) * this->numPairs);
-  for (int i = 0; i < this->numPairs; ++i) {
+// [807, 249, 73]
+  // string *randNumbs = (string *)malloc(sizeof(string) * numPairs);
+  string *randNumbs = new string[numPairs];
+  for (int i = 0; i < numPairs; ++i) {
     randNumbs[i] = to_string(rand() % 1000);
     // cout << randNumbs[i] << endl;
   }
 
-  int* index = randomize(this->numSpaces); // [0, 1, 3, 5, 4, 7, 6, 2]
-  // for (int i = 0; i < this->numSpaces; ++i) {
+  int *index = randomize(numSpaces); // [0, 1, 3, 5, 4, 7, 6, 2]
+  // for (int i = 0; i < numSpaces; ++i) {
   //   cout << index[i] << endl;
   // }
 
   // randNumbs = [807, 249, 73]
   // index = [0, 1, 3, 5, 4, 7, 6, 2]
-  this->values = new string[this->numSpaces];
-  for (int i = 0; i < this->numSpaces; ++i) {
-    if (i < this->numPairs * 2) { // [0, 6)
-      this->values[index[i]] = randNumbs[i / 2];
-      this->values[index[i + 1]] = randNumbs[i / 2];
-    }
-    else {
-      this->values[index[i]] = "";
+  values = new string[numSpaces];
+  for (int i = 0; i < numSpaces; ++i) {
+    if (i < numPairs * 2) { // [0, 6)
+      values[index[i]] = randNumbs[i / 2];
+      values[index[i + 1]] = randNumbs[i / 2];
+    } else {
+      values[index[i]] = "";
     }
   }
-  free(randNumbs);
-  free(index);
+  delete[] randNumbs;
+  delete[] index;
+  randNumbs = nullptr;
+  index = nullptr;
 }
 
 //TODO: implement by students
@@ -69,8 +70,8 @@ MemoryGame::~MemoryGame() {
   //When an object is no longer in need,
   //release dynamically allocated memory by
   //data members of the current object.
-  delete[] this->values;
-  this->values = nullptr;
+  delete[] values;
+  values = nullptr;
 }
 
 //TODO: implement by students
@@ -79,7 +80,7 @@ MemoryGame::~MemoryGame() {
 //Return an array of randomly allocated 0, 1, .., size-1
 //In constructors, randomly assign the data in dataVector
 //to array values
-int* randomize(int size) {
+int *randomize(int size) {
   //idea to randomize 0, 1, 2, 3, 4, 5,
   //generate a random int in [0, 6), say 3,
   //then move arr[3] to the end,
@@ -92,7 +93,8 @@ int* randomize(int size) {
   //get 0, 1, 4, 2, 5, 3
   //continue to randomize arr[0..2].
   //afterwards, continue to randomize arr[0..1].
-  int* arr = (int*)malloc(sizeof(int) * size);
+  // int *arr = (int *)malloc(sizeof(int) * size);
+  int *arr = new int[size];
   for (int i = 0; i < size; ++i) {
     arr[i] = i;
   }
@@ -107,7 +109,7 @@ int* randomize(int size) {
 //int* arr means int array arr, which implies the address
 //of the first element of array arr.
 //swap arr[i] and arr[j] in array of ints arr.
-void swap(int* arr, int i, int j) {
+void swap(int *arr, int i, int j) {
   int temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
@@ -129,26 +131,25 @@ void displaySeparateLine(int numSpaces) {
 
 //TODO: implement by students
 //display the items in values array where bShown is true.
-void MemoryGame::display(bool* bShown) {
+void MemoryGame::display(bool *bShown) {
   cout << " ";
-  for (int i = 0; i < this->numSpaces; ++i) {
+  for (int i = 0; i < numSpaces; ++i) {
     cout << setw(3) << i;
     cout << setw(3) << " ";
   }
   cout << "\n";
-  displaySeparateLine(this->numSpaces);
+  displaySeparateLine(numSpaces);
   cout << "|";
-  for (int i = 0; i < this->numSpaces; ++i) {
+  for (int i = 0; i < numSpaces; ++i) {
     if (bShown[i]) {
-      cout << setw(5) << this->values[i];
-    }
-    else {
+      cout << setw(5) << values[i];
+    } else {
       cout << setw(5) << "";
     }
     cout << "|";
   }
   cout << "\n";
-  displaySeparateLine(this->numSpaces);
+  displaySeparateLine(numSpaces);
 }
 
 //TODO: implement by students
@@ -159,8 +160,8 @@ void MemoryGame::display(bool* bShown) {
 //    otherwise, unflip the previous pick.
 //(3) Finish until every pair are chosen correctly.
 void MemoryGame::play() {
-  bool* bShown = new bool[this->numSpaces];
-  for (int i = 0; i < this->numSpaces; ++i) {
+  bool *bShown = new bool[numSpaces];
+  for (int i = 0; i < numSpaces; ++i) {
     bShown[i] = false;
   }
   int pairsFound = 0;
@@ -168,19 +169,18 @@ void MemoryGame::play() {
   int first = -1;
   int index;
   // setenv("TERM", "${TERM:-dumb}", false);
-  this->display(bShown);
+  display(bShown);
   while (pairsFound < numPairs) {
     // system("clear");
     cout << "Pick a cell to flip: ";
     cin >> index;
-    while (index < 0 or index >= this->numSpaces or bShown[index]) {
+    while (index < 0 or index >= numSpaces or bShown[index]) {
       if (bShown[index]) {
         cout << "The cell indexed at " << index << " is shown."
-          << "\n";
-      }
-      else {
-        cout << "index needs be in range of [0, " << this->numSpaces - 1 << "]."
-          << "\n";
+             << "\n";
+      } else {
+        cout << "index needs be in range of [0, " << numSpaces - 1 << "]."
+             << "\n";
       }
       cout << "Re-enter an index: ";
       cin >> index;
@@ -189,26 +189,24 @@ void MemoryGame::play() {
     if (first == -1) { // first flip
       bShown[index] = true;
       first = index;
-    }
-    else { // second flip
-      if (this->values[first] == this->values[index]) {
-        if (this->values[index] != "") {
+    } else { // second flip
+      if (values[first] == values[index]) {
+        if (values[index] != "") {
           bShown[index] = true;
           pairsFound += 1;
           first = -1;
         }
-      }
-      else {
+      } else {
         bShown[first] = false;
         first = -1;
       }
     }
     numFlips += 1;
-    this->display(bShown);
+    display(bShown);
   }
   cout << "Congratulations! Take " << numFlips
-    << " steps to find all matched pairs."
-    << "\n";
+       << " steps to find all matched pairs."
+       << "\n";
   delete[] bShown;
   bShown = nullptr;
 }
